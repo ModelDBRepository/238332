@@ -1,0 +1,35 @@
+
+ANATOMICAL CONNECOME MODEL 
+Last update: 18/1/2018
+
+This directory contains the MATLAB code implementation of the anatomical model of connectivity in the tadpole spinal cord. The model
+uses a developmental approach of axonal growth in a 2D spinal cord envirand a numberus amount of experimental data to generate a biologically
+realisitic map of synaptic connections between neurons in the spinal cord. For details about the model formalization and implementation, 
+see Borisyuk et al, PloS One, 2014.
+
+To run one simulation of the anatomical model, run the matlab main_spinal_cord.m file. In this code version, all plotting commands 
+are disabled by commenting. This simulation will save the following output files in the "connectome files" directory:
+
+- DendriteGrad1.txt
+- inc_connectGrad1.txt
+- ALL_synapsesGrad1.txt
+- axon_L_ascGrad1.txt
+- axon_L_descGrad1.txt
+- axon_R_ascGrad1.txt
+- axon_R_descGrad1.txt
+
+The description of the data contained in these files as well as manual of how to read them read the file 
+"Anatomical Model description.doc" contained in this directory.
+
+To run multiple (parallel) simulations of the anatomical model launch the matlab file run_many_connectomes.m file. 
+This file allows to run a user specified number m of anatomical connectomes. For each iteration i=1,...,m the code
+runs the anatomical model code via the main_spinal_cord_sub.m subroutine. The code of this subroutine is the same 
+as the one contained in the main_spinal_cord.m file, except for the specifications of the returning output files. 
+Output of these each main_spinal_cord_sub.m iteration i=1,...,m are:
+
+- DendriteGradi.txt
+- inc_connectGradi.txt
+
+These two files are saved in the directory "connectome files", and they are identical to the homonym files 
+returned by the main_spinal_cord.m file described above. These two pair of files are used in the functional 
+model of spiking units described in Roberts et al, Journal of Neurosci, 2014

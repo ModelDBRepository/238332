@@ -1,0 +1,27 @@
+
+FUNCTIONAL MODEL OF SWIMMING 
+
+This directory contains the NEURON code for simulating the dynamics of swimming in the Xenopus tadpole spinal cord. 
+The model uses the anatomical connectome or probabilistic connectome to generate synaptic connectivity between 
+the neurons in the spinal cord. This is a brief description of the files and directory:
+
+- main.py: this is the main code of the simulation. This file contains several routines that create cells, connections, 
+  launching a single or parallel (multiple) swimmig simulations and saving results 
+- util.py: utility routines for plotting neuron voltages and spike trains, injecting DC current and destroy cells
+- param.py: file describing all model parameters
+- nrnMod: folder containing all nrnhoc instances that need to be compiled (via nrnivmodl Neuron syntax)
+- nrnTemplate: folder containing cell type specifications in the file CellTemplateCommon.py. This file uses Neuron python
+  uses hoc code to create single compartment cells with specified properties, includes methods for generating connections
+  between neurons. 
+- mp_util.py: code for launching swimming simulations across multiple cores. 
+- figures: folder that contains the output of the simulations in folders that are named after current time. 
+
+To easily check if the simulation is running, launch one swimming simulation until 300ms using the following python commands:
+
+import main 
+main.SwimmingSimulation(300,1)
+
+Launch parallel number (num_process) of stochastic swimming simulations use the following command lines:
+
+RunManySim(num_process)
+
